@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin user info</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<b>This is admin page</b>
+<br/>
+<button id="mybtn">Get Users information</button>
+<div>
+    <ul id="output">
+    </ul>
+</div>
+<br/>
+<script>
+    $('#mybtn').click(function () {
+
+        $.getJSON('getUsersInfo', function (data) {
+
+            $("ul#output > li").remove();
+
+            $.each(data, function (key, value) {
+                $("#output").append('<li>' + "login name is " + value['login'] + ", name is " + value['name']
+                    + " and age equals " + value['age'] + '</li>');
+            });
+        });
+    });
+</script>
+</body>
+</html>
